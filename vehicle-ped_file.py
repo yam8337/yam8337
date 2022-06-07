@@ -1,11 +1,10 @@
 import xml.etree.ElementTree as ET
-from itertools import groupby
 import time 
 
         
 def read_net_file():
         
-    path = "/home/mittal/10.05.22/ingolstadt.net.xml"
+    path = "/home/mittal/VRU/All_one/ingolstadt.net.xml"
     tree = ET.parse(path)
     root = tree.getroot()
 
@@ -50,13 +49,13 @@ if __name__ == "__main__":
     #Read the net file to make memory of edge:length
     make_dictonary = read_net_file()
 
-    path = "/home/mittal/10.05.22/persons.rou.xml"
+    path = "/home/mittal/VRU/All_one/persons.rou.xml"
     tree = ET.parse(path)
     root = tree.getroot()
 
     #create new-only-vehicle file to preserve the original file
     name = time.strftime("%Y\%m\%d--%I:%M:%S")
-    path_copy = '/home/mittal/10.05.22/persons.'+name+'.rou.xml'
+    path_copy = '/home/mittal/VRU/All_one/persons.'+name+'.rou.xml'
     tree.write(path_copy)
 
     #creating xml with only vehicles
@@ -89,7 +88,7 @@ if __name__ == "__main__":
     vehile_route_file.write(path_copy,encoding='utf-8', xml_declaration=True)
     
     #creating xml with only pedestrains
-    ped_path = '/home/mittal/10.05.22/persons.pedestrians.'+name+'.rou.xml'
+    ped_path = '/home/mittal/VRU/All_one/persons.pedestrians.'+name+'.rou.xml'
     tree.write(ped_path)
     pedestrian_route_file = ET.parse(ped_path)
     root_pedestrian_route_file = pedestrian_route_file.getroot()
